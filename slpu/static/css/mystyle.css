@@ -1,0 +1,30 @@
+.myscrolling {
+    height: 550px; /* высота нашего блока */
+    width: auto; /* ширина нашего блока */
+    background: #fff; /* цвет фона, белый */
+    border: 1px solid #C1C1C1; /* размер и цвет границы блока */
+    overflow-x: scroll; /* прокрутка по горизонтали */
+    overflow-y: scroll; /* прокрутка по вертикали */
+    margin-left: 10px;
+}
+
+.test{
+    font-size: 11px;
+    width: 100%;
+}
+
+table tr .cl1{
+    width: 5%;
+}
+
+table tr .cl2{
+    width: 10%;
+}
+
+table tr .cl3{
+    width: 35%;
+}
+
+table tr .cl4{
+    width: 15%;
+}

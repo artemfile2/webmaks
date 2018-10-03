@@ -1,0 +1,69 @@
+{% extends 'main.html' %}
+
+<title>{% block title %} Данные по МО {{glpu}} {% endblock %}</title>
+
+{% block content %}
+    <div class="bd-example alert alert-success" role="alert">
+        {% for value in glslpu %}
+            КОД МО: <strong>{{value.glpu}}</strong>
+            <hr>
+            Наименование: <strong>{{value.m_namef}}</strong>
+        {% endfor %}
+    </div>
+
+    <div class="bd-example myscrolling">
+        <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scrollspy-example">
+            <table class="table table-bordered table-responsive test">
+                <thead>
+                    <tr class="table-info">
+                        <th scope="col">№</th>
+                        <th scope="col">Период</th>
+                        <th scope="col">Предъявленная сумма ОМС</th>
+                        <th scope="col">Кол-во услуг</th>
+                        <th scope="col">Сумма штрафа</th>
+                        <th scope="col">Кол-во ошибок</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% if data_ut %}
+                    {% for period, data_period in data_ut.items %}
+                        <tr>
+                            <td>
+                                {{forloop.counter}}
+                            </td>
+                            <th>
+                                <a href="/slpu/{{glpu}}/period/{{period}}">Период: {{period}} </a>
+                            </th>
+                            {% for key, data_val in data_period.items %}
+                                <td>
+                                    <b>
+                                        {{data_val}}
+                                    </b>
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content2 %}
+    <div class="bd-example myscrolling">
+        <ul>
+            {% for slpu in slpumo %}
+                <li type="1">
+                    <a href="/slpu/{{ slpu.glpu }}/{{ slpu.mcod }}/">{{slpu.mcod}}</a>
+                    |
+                    <a href="/slpu/{{ slpu.glpu }}/{{ slpu.mcod }}/">{{slpu.name}}</a>
+                    |
+                    <a href="/slpu/{{ slpu.glpu }}/{{ slpu.mcod }}/">{{slpu.umpname}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

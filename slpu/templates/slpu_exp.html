@@ -1,0 +1,68 @@
+{% extends 'main.html' %}
+
+<title>{% block title %} Экспертиза {% endblock %}</title>
+
+{% block content %}
+    <div class="bd-example alert alert-success" role="alert">
+        {% for value in glslpu %}
+            КОД МО: <strong>{{value.glpu}}</strong>
+            <hr>
+            Наименование: <strong>{{value.m_namef}}</strong>
+        {% endfor %}
+    </div>
+
+    <div class="bd-example myscrolling">
+        <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scrollspy-example">
+            <table class="table table-bordered table-responsive test">
+                <thead>
+                    <tr class="table-info">
+                        <th scope="col" class="cl1">№</th>
+                        <th scope="col" class="cl1">Снят</th>
+                        <th scope="col" class="cl2">Код подр.</th>
+                        <th scope="col" class="cl4">Полис</th>
+                        <th scope="col" class="cl3">Ф.И.О.</th>
+                        <th scope="col" class="cl3">Ошибка</th>
+                        <th scope="col" class="cl1">Код</th>
+                        <th scope="col" class="cl1">Сумма</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for value in eks %}
+                    <tr>
+                        <th>{{forloop.counter}}</th>
+                        <td>
+                            <div class="form-check">
+                             <input class="form-check-input" type="checkbox" value="" name="{{value.id_pac}}" id="{{value.id_pac}}"
+                                    {% if value.label == 1 %}
+                                        checked
+                                    {% endif %}
+                             >
+                            </div>
+                        </td>
+                        <td>{{value.mcod}}</td>
+                        <td>{{value.id_pac|cut:"-0"}}</td>
+                        <td>{{value.fio}}</td>
+                        <td>{{value.comments}}</td>
+                        <td>{{value.flag}}</td>
+                        <td>{{value.summ_shtr}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content2 %}
+    <div class="bd-example alert alert-success">
+        <p><strong>Отчетный период: {{period}}</strong></p>
+        <hr>
+        <p>Количество ошибок: <b>{{cnt_err.snkcnt}}</b></p>
+        <p>Сумма штрафа: <b>{{cnt_err.sumsnk}}</b></p>
+    </div>
+    <div class="bd-example alert alert-success">
+        <p>Типы ошибок:</p>
+        <hr>
+    </div>
+{% endblock %}

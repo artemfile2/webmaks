@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+
+<title>{% block title %} Загрузка DBF {% endblock %}</title>
+
+{% block content %}
+    <p></p>
+    <ul class="list-group">
+        <li class="list-group-item active">Загрузка файлов по очереди:</li>
+        <li class="list-group-item">oper.dbf</li>
+        <li class="list-group-item">sp_tarif.dbf</li>
+        <li class="list-group-item">rg.dbf</li>
+        <li class="list-group-item">podush.dbf</li>
+        <li class="list-group-item">met_hmp.dbf</li>
+        <li class="list-group-item">klpu.dbf</li>
+        <li class="list-group-item">s_lpu.dbf</li>
+        <li class="list-group-item">umer.dbf</li>
+        <li class="list-group-item">stacotd.dbf</li>
+        <li class="list-group-item">profot.dbf</li>
+        <li class="list-group-item">prikr.dbf</li>
+    </ul>
+    <div class="bd-example">
+        <form class="was-validated" method="post" action="{{upload_dbf}}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" class="btn btn-primary" value="Загрузить" name="mybtn">
+        </form>
+        {{message}}
+    </div>
+{% endblock %}
+
+{% block content2 %}
+    <aside>
+        <h3>Страница загрузки DBF файлов</h3>
+    </aside>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+
+<title>{% block title %} Справочник МО {% endblock %}</title>
+
+{% block content %}
+    <div class="bd-example myscrolling">
+        <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scrollspy-example">
+            {{ query }}
+            <table class="table table-bordered table-responsive">
+                <thead>
+                    <tr class="table-info">
+                        <th scope="col">№</th>
+                        <th scope="col">Код МО</th>
+                        <!--<th scope="col">Код подр.</th>-->
+                        <th scope="col">Наименование МО</th>
+                        <!--<th scope="col">Код услуги</th>-->
+                    </tr>
+                </thead>
+                <tbody>
+                {% for slpu in all_slpu %}
+                <tr>
+                    <th>{{forloop.counter}}</th>
+                    <td><a href="/slpu/{{slpu.glpu}}/">{{slpu.glpu}}</a></td>
+                    <!--<td><a href="/data/{{ slpu.glpu }}">{{slpu.mcod}}</a></td>-->
+                    <td><a href="/slpu/{{slpu.glpu}}/">{{slpu.name}}</a></td>
+                    <!--<td><a href="/data/{{ slpu.glpu }}">{{slpu.idump}}</a></td>-->
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block content2 %}
+    <aside>
+        {% if cnt %}
+            <ul>
+                {% for key, value in cnt.items %}
+                    <li>
+                        {{ key }} : {{ value }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </aside>
+{% endblock %}

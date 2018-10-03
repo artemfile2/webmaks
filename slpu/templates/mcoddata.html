@@ -1,0 +1,47 @@
+{% extends 'main.html' %}
+
+<title>{% block title %} Информация о подразделении {% endblock %}</title>
+
+
+{% block content %}
+
+    <div class="alert alert-success" role="alert">
+        {% for value in glslpu %}
+            КОД МО: <strong>{{value.glpu}}</strong>
+            <hr>
+            Наименование: <strong>{{value.m_namef}}</strong>
+        {% endfor %}
+    </div>
+
+    <hr>
+
+    <div>
+        <table  class="table table-bordered table-responsive">
+        {% for value in mcslpu %}
+            <tr><td>{{value.mcod}}</td></tr>
+            <tr><td>{{value.name}}</td></tr>
+            <tr><td>{{value.m_namef}}</td></tr>
+            <tr><td>{{value.umpname}}</td></tr>
+            <tr><td>{{value.tel}}</td></tr>
+            <tr><td>{{value.m_adres}}</td></tr>
+            <tr><td>{{value.fam_gv}} {{value.im_gv}} {{value.ot_gv}}</td></tr>
+            <tr><td>{{value.fam_buh}} {{value.im_buh}} {{value.ot_buh}}</td></tr>
+            <tr><td>{{value.om_primec}}</td></tr>
+        {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}
+
+
+{% block content2 %}
+
+    <!--{% if all_period %}-->
+        <!--<ul>-->
+            <!--{% for value in all_period %}-->
+                <!--<li><a href="#">Месяц: {{value.month}} Год: {{value.year}}</a></li>-->
+            <!--{% endfor %}-->
+        <!--</ul>-->
+    <!--{% endif %}-->
+
+{% endblock %}
